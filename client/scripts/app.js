@@ -1,55 +1,66 @@
 console.log('app.js loaded!');
 
 var app = angular.module("hangmanApp", [])
-  .controller('hangmanController', hangmanController);
+  .controller('hangmanController', hangmanController)
+  .directive('wdiHangman', wdiHangman);
+
+function wdiHangman(){
+  console.log('hello');
+  var directive = {
+    restrict: 'EA',
+    replace: false,
+    templateUrl: 'templates/hangman-directive.html'
+  }
+  return directive;
+}
 
 
 function hangmanController() {
   var vm = this;
   console.log('hangmanController online');
-  this.controllerWorks = true;
-  this.game = new HangmanGame('elephant');
-  this.guess = '';
-  this.checkGuess = checkGuess;
+  vm.controllerWorks = true;
+  vm.game = new HangmanGame('elephant');
+  vm.guess = '';
+  vm.checkGuess = checkGuess;
 
   // define functions separately to keep code easy to read
-  // this function sends the new guess to the hangmanGame which updates accordingly
+  // checkGuess sends the new guess to the hangmanGame which updates accordingly
   // it then clears the input field
   function checkGuess() {
-    var guess = this.guess;
-    var result = this.game.guess(guess);
+    var guess = vm.guess;
+    var result = vm.game.guess(guess);
     if (result === 'WIN') {
       alert('you win!');
     } else if(result === 'LOSE') {
       alert("oh no! you lost (◕︵◕)");
     } // else we continue playing
-    this.guess = '';
+    vm.guess = '';
   }
 }
 
 
-// Alternate solution using multiple primitives/scalars for the view.  Note how in this case,
+// Alternate solution using multiple primitives/scalars for the view.  Note how in vm case,
 // we explicitly update properties on the controller.  These are copies, from the
 // game and so won't update on their own, (outside of angular bindings).
-// Note also that when using this syntax index.html should be updated to reference
+// Note also that when using vm syntax index.html should be updated to reference
 //   these properties directly: e.g. use hangman.guesses rather than hangman.game.guesses
 /*
 function hangmanController() {
-  var vm = this;
+  var vm = vm;
   console.log('hangmanController online');
-  this.controllerWorks = 'ok';
+  vm.controllerWorks = 'ok';
   var game = new HangmanGame('elephant');
-  this.guesses = game.guesses;
-  this.completedWord = game.completedWord;
-  this.triesRemaining = game.triesRemaining;
-  this.guess = '';
-  this.checkGuess = checkGuess;
+  vm.guesses = game.guesses;
+  vm.completedWord = game.completedWord;
+  vm.triesRemaining = game.triesRemaining;
+  vm.guess = '';
+  vm.checkGuess = checkGuess;
 
   // define functions separately to keep code easy to read
-  // this function sends the new guess to the hangmanGame which updates accordingly
+  // vm function sends the new guess to the hangmanGame which updates accordingly
   // it then clears the input field
   function checkGuess() {
-    var guess = this.guess;
+    var guess = vm.guess;
     game.guess(guess);
     updateState();
   }

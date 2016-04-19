@@ -6,13 +6,13 @@
   <meta charset="utf8" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://bootswatch.com/cyborg/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="styles/styles.css" />
   <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
-  <script src="js/hangman.js"></script>
-  <script src="js/app.js"></script>
+  <script src="scripts/hangman.js"></script>
+  <script src="scripts/app.js"></script>
 </head>
 
 <body class="full-background">
@@ -31,6 +31,44 @@ _________
     </pre>
     <div class='col-sm-12 col-md-6 col-md-offset-3 text-center'>
       {{ hangman.game.triesRemaining }} tries remaining
+    </div>
+    <div class="hangman col-sm-12 col-md-6 col-md-offset-3 text-center">
+      <wdi-hangman></wdi-hangman>
+      <!-- <div class="row">
+        <div class="noose col-xs-4 col-xs-offset-4">
+        |
+        </div>
+      </div>
+      <div class="row">
+        <div class="head not-revealed col-xs-4 col-xs-offset-4">
+          ( _ )
+        </div>
+      </div>
+      <div class="row">
+        <div class="left-arm not-revealed col-xs-1 col-xs-offset-4">
+          /
+        </div>
+        <div class="torso not-revealed col-xs-2">
+          |
+        </div>
+        <div class="right-arm not-revealed col-xs-1">
+          \
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="torso not-revealed col-xs-2 col-xs-offset-5">
+          |
+        </div>
+      </div>
+      <div class="row">
+        <div class="left-leg not-revealed col-xs-2 col-xs-offset-4">
+          /
+        </div>
+        <div class="right-leg not-revealed col-xs-2">
+          \
+        </div>
+      </div> -->
     </div>
   </div>
   <div class='row'>

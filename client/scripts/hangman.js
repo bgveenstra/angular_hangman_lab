@@ -20,7 +20,7 @@ HangmanGame.prototype.guess = function(newLetter) {
   } else {
     this.triesRemaining--;
   }
-  // only add unique letters 
+  // only add unique letters
   if (this.guesses.indexOf(newLetter) === -1) {
     this.guesses.push(newLetter);
   }
@@ -28,7 +28,9 @@ HangmanGame.prototype.guess = function(newLetter) {
   return this.checkGameWinStatus();
 };
 
-// wordSoFar returns the word completed up till now
+// hg.wordSoFar() returns the word completed up till now,
+//    with underscores for missing letters
+//    'example' after guessing 'e', 'a', 'l': 'e_a__le'
 HangmanGame.prototype.wordSoFar = function() {
   var newSecretWord = '';
   for (var index in this.secretWord) {
@@ -43,7 +45,10 @@ HangmanGame.prototype.wordSoFar = function() {
   return newSecretWord;
 };
 
-// determines win/lose/continue
+// hg.checkGameWinStatus() determines win/lose/continue
+//  returns 'LOSE' if player has lost,
+//  returns 'WIN' if player has won,
+//  returns 'CONTINUE' if play is ongoing
 HangmanGame.prototype.checkGameWinStatus = function() {
   if(this.triesRemaining === 0) {
     return 'LOSE';
@@ -54,6 +59,7 @@ HangmanGame.prototype.checkGameWinStatus = function() {
   }
 };
 
+// hg.isLetterInWord('i', 'example')
 // returns true if the letter is in the word, false if not
 HangmanGame.prototype.isLetterInWord = function(letter, word) {
   return ((word.split('').indexOf(letter) > -1) ? (true) : (false));

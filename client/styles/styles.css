@@ -9,3 +9,7 @@ body { font-size: 32px; }
   font-size: 14px;
   vertical-align: middle;
 }
+
+.not-revealed {
+  color: black;
+}
